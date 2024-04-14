@@ -1,0 +1,30 @@
+/* 헤더 링크 스타일 */
+.header-link {
+    text-decoration: none;
+    color: #000; /* 헤더 링크 기본 색상 */
+    margin-right: 20px;
+}
+
+/* 프로필 이미지 스타일 */
+.profile-picture img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* 컨트롤 버튼 아이콘 스타일 */
+.control-icons img {
+    width: 20px; /* 컨트롤 버튼 아이콘 기본 크기 */
+    height: 20px;
+    margin-right: 10px;
+}
+
+
+
+/* 인기 앨범 및 TOP 100 섹션 스타일 */
+.album-item,
+.top100-item {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
