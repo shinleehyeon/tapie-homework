@@ -1,0 +1,23 @@
+<!-- TAPIE{af8c01cea8439093156a10f682c21f57fc8b261378920b90654c2b235c6515d1} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function fetchAndDisplayData() {
+            fetch('https://fetch1.etty.dev/level0/solve')
+            .then(response => response.text())
+            .then(data => {
+                var resultContainer = document.getElementById('result');
+                resultContainer.innerHTML = data;
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="result"></div>
+</body>
+</html>

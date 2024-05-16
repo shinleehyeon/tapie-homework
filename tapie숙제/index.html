@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <script>
+        var All;
+
+        function fetchData() {
+            var url = "https://jsonplaceholder.typicode.com/posts";
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    All = data;
+                    displayData();
+                })
+                .catch((error) => console.log("error:", error));
+        }
+
+        function displayData() {
+            var listMarkup = `
+                <div class="main">
+                    <div class="frame3">
+            `;
+
+            All.forEach((item, index) => {
+                listMarkup += buildListItem(item, index);
+            });
+
+            listMarkup += `
+                </div>
+            </div>
+            `;
+
+            document.getElementById("main").innerHTML = listMarkup;
+            hideLoadingBar();
+
+        }
+
+        function buildListItem(item, idx) {
+            var content = `
+                <div class="frame35">
+                    <div class="frame4">
+                        <span id="title" onclick='showContent(${idx})'>${item.title}</span>
+                        <span>id: ${item.id}</span>
+                    </div>
+                    <span>${item.body}</span>
+                </div>
+            `;
+            console.log(content);
+            return content;
+}
+        function hideLoadingBar() {
+            var loadingTag = document.getElementById("loading");
+            loadingTag.style.display = "none";
+        }
+
+
+        function showContent(idx) {
+            var item = All[idx];
+            var contentHTML = `
+                <div class="main">
+                    <div class="frame3">
+                        <div class="frame35">
+                            <img src='./assets/arrow.png' onclick='showMain()'>
+                            <div class="frame4">
+                                <span id="title">${item.title}</span>
+                                <span>id : ${item.id}</span>
+                            </div>
+                            <span>${item.body}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            var mainTag = document.getElementById("main");
+            var contentTag = document.getElementById("content");
+            mainTag.style.display = "none";
+            contentTag.innerHTML = contentHTML;
+        }
+
+        function showMain() {
+            var mainTag = document.getElementById("main");
+            var contentTag = document.getElementById("content");
+            mainTag.style.display = "block";
+            contentTag.innerHTML = "";
+        }
+        
+    </script>
+</head>
+
+
+<body onload="fetchData()">
+    <div id="loading">로딩중</div>
+    <div id="main"></div>
+    <div id="content"></div>
+</body>
+</html>
